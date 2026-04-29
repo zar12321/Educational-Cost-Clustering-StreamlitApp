@@ -453,44 +453,50 @@ if 'cascade_filters' not in st.session_state:
         'university': None
     }
 
-# continent filter
+# 🌍 Continent filter
 st.sidebar.markdown("### 🌍 Select Continent")
-continent_options = sorted([x for x in df["continent"].dropna().unique()])
+continent_options = sorted(df["continent"].dropna().unique())
+
 selected_continent = st.sidebar.multiselect(
     "Choose a Continent",
-    [""] + continent_options,
-    key="sidebar_continent",
-    index=0
+    continent_options,
+    key="sidebar_continent"
 )
 
-# country filter - depends on selected continent
+# 🏳️ Country filter (depends on continent)
 st.sidebar.markdown("### 🏳️ Select Country")
+
 if selected_continent:
-    country_options = sorted(df[df["continent"] == selected_continent]["country"].dropna().unique())
+    country_options = sorted(
+        df[df["continent"].isin(selected_continent)]["country"].dropna().unique()
+    )
 else:
-    country_options = sorted([x for x in df["country"].dropna().unique()])
+    country_options = sorted(df["country"].dropna().unique())
 
 selected_country = st.sidebar.multiselect(
     "Choose a Country",
-    [""] + country_options,
-    key="sidebar_country",
-    index=0
+    country_options,
+    key="sidebar_country"
 )
 
-# university filter - depends on selected country
+# 🎓 University filter (depends on country / continent)
 st.sidebar.markdown("### 🎓 Select University")
+
 if selected_country:
-    university_options = sorted(df[df["country"] == selected_country]["university"].dropna().unique())
+    university_options = sorted(
+        df[df["country"].isin(selected_country)]["university"].dropna().unique()
+    )
 elif selected_continent:
-    university_options = sorted(df[df["continent"] == selected_continent]["university"].dropna().unique())
+    university_options = sorted(
+        df[df["continent"].isin(selected_continent)]["university"].dropna().unique()
+    )
 else:
-    university_options = sorted([x for x in df["university"].dropna().unique()])
+    university_options = sorted(df["university"].dropna().unique())
 
 selected_university = st.sidebar.multiselect(
     "Select a University",
-    [""] + university_options,
-    key="sidebar_university",
-    index=0
+    university_options,
+    key="sidebar_university"
 )
 
 # Additional filters section
