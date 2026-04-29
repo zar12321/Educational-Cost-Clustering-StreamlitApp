@@ -1429,7 +1429,7 @@ with tabs[4]:
         return ''
     
     # Apply styling to the dataframe
-    styled_explorer_data = explorer_data[display_columns].style.applymap(
+    styled_explorer_data = explorer_data[display_columns].style.map(
         color_cluster_cells, subset=['cluster_name']
     )
     
