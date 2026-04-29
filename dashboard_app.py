@@ -456,7 +456,7 @@ if 'cascade_filters' not in st.session_state:
 # continent filter
 st.sidebar.markdown("### 🌍 Select Continent")
 continent_options = sorted([x for x in df["continent"].dropna().unique()])
-selected_continent = st.sidebar.selectbox(
+selected_continent = st.sidebar.multiselect(
     "Choose a Continent",
     [""] + continent_options,
     key="sidebar_continent",
@@ -470,7 +470,7 @@ if selected_continent:
 else:
     country_options = sorted([x for x in df["country"].dropna().unique()])
 
-selected_country = st.sidebar.selectbox(
+selected_country = st.sidebar.multiselect(
     "Choose a Country",
     [""] + country_options,
     key="sidebar_country",
@@ -486,7 +486,7 @@ elif selected_continent:
 else:
     university_options = sorted([x for x in df["university"].dropna().unique()])
 
-selected_university = st.sidebar.selectbox(
+selected_university = st.sidebar.multiselect(
     "Select a University",
     [""] + university_options,
     key="sidebar_university",
