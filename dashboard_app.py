@@ -523,11 +523,11 @@ filtered_df = df.copy()
 
 # Apply cascade filters
 if selected_continent:
-    filtered_df = filtered_df[filtered_df["continent"] == selected_continent]
+    filtered_df = filtered_df[filtered_df["continent"].isin(selected_continent)]
 if selected_country:
-    filtered_df = filtered_df[filtered_df["country"] == selected_country]
+    filtered_df = filtered_df[filtered_df["country"].isin(selected_country)]
 if selected_university:
-    filtered_df = filtered_df[filtered_df["university"] == selected_university]
+    filtered_df = filtered_df[filtered_df["university"].isin(selected_university)]
 
 # Apply additional filters
 if selected_fields:
