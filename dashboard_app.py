@@ -540,7 +540,7 @@ if selected_clusters:
 # ================================================
 # MAIN DASHBOARD HEADER AND KPIs
 # ================================================
-st.markdown('<h1 class="main-header">Edu Cost Intelligence Dashboard</h1>', unsafe_allow_html=True)
+st.markdown('<h1 class="main-header">Educational Cost Intelligence Dashboard</h1>', unsafe_allow_html=True)
 st.markdown("Compare overseas study costs, explore patterns across fields & regions, and segment programs into cost clusters.")
 
 st.markdown("<br>", unsafe_allow_html = True)
