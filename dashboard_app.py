@@ -13,7 +13,7 @@ load_dotenv()
 
 # Set page configuration
 st.set_page_config(
-    page_title="EduCooooooooooooost",
+    page_title="EduCost",
     layout="wide",
     page_icon="🎓"
 )
